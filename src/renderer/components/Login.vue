@@ -44,7 +44,8 @@
         },
         methods: {
             line() {
-                redisTool.tables();
+                redisTool.connect();
+                this.$router.push({path: '/main'});
             }
         }
     }

@@ -14,12 +14,20 @@ let connect = async () => {
 };
 
 export default {
+    async connect() {
+        if (redisConnect === null) {
+            await connect();
+            return true;
+        }
+    },
     async tables () {
         if (redisConnect === null) {
             await connect();
         }
-        redisConnect.command('CONFIG GET db', function(res) {
-            console.log(res);
-        });
+        return new Promise((resolve, reject) => {
+            redisConnect.CONFIG('GET', 'databases', (err, res) => {
+                resolve(res[1]);
+            });
+        })
     }
 }

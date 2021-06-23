@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Login from '../components/Login'
+import Main from '../components/Main'
 
 Vue.use(Router)
 
@@ -13,8 +14,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '*',
-      redirect: '/'
+      path: '/main',
+      name: 'main',
+      component: Main
     }
   ]
 })
